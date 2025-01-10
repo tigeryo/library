@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算法文档</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+
+<body>
+    <nav>
+        <h2>目录</h2>
+        <ol>
+            <li><a href="../subpage/RemoveTemperatureEffectOfStrainFiber.html">去除应变温度效应</a></li>
+            <li>算法2</li>
+        </ol>
+    </nav>
+
+    <div class="content">
+        <h1>去除应变温度效应</h1>
+
+        <ul>
+            <li><span class="highlight">算法名称：</span>RemoveTemperatureEffectOfStrainFiber</li>
+
+            <li><span class="highlight">算法功能：</span>适用于剔除应变光纤的温度效应。</li>
+
+            <li><span class="highlight">算法背景：</span>应变光纤光栅在测量过程中，光纤自身也会受到温度变化影响，因此实际测量结果包括被测物体表面应变和光纤自己的温度应变，需要根据光纤光栅的温度效应系数剔除温度应变。</li>
+
+            <li><span class="highlight">算法参数</span></li>
+                <ul>
+                    <li>
+                        <div>输入与输出</div>
+                        <table class="input_and_output">
+                            <tr>
+                                <td><span class="highlight2">input</span></td>
+                                <td>一组应变序列数据，以及一组或多组温度序列数据</td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="highlight2">output</span></td>
+                                <td>修正后的应变序列，修正过程中应变与温度的相关性序列</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <div><span class="highlight2">window_size</span>&nbsp;滑动窗口宽度</div>
+                        <div>默认为7d，用于计算一定时间内应变与温度的相关性。</div>
+                    </li>
+
+                    <li><span class="highlight2">window_size_min</span>&nbsp;最小时间范围<br>
+                        默认为1d，如果滑动窗口内应变实际监测天数不足1天，不予计算。
+                    </li>
+
+                    <li>
+                        <div><span class="highlight2">k</span>&nbsp;温度效应系数</div>
+                        <div>默认为8.45微应变/℃。</div>
+                        <div class="formula">$$ E = mc^2 $$</div>
+                    </li>
+
+                    <li><span class="highlight2">t</span>&nbsp;基准温度<br>
+                        默认为20℃。
+                    </li>
+
+                    <li><span class="highlight2">mode</span>&nbsp;计算模式<br>
+                        <table class="input_and_output">
+                            <tr>
+                                <td>一组输入温度</td>
+                                <td>mode不生效</td>
+                                <td>直接将这一组温度视作测点附近温度；</td>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="3">多组输入温度</td>
+                                <td>mode = 0</td>
+                                <td>将输入温度的均值作为测点附近温度；</td>
+                            </tr>
+
+                            <tr>
+                                <td>mode = 1</td>
+                                <td>计算应变与温度的相关性系数，将相关性系数最高的一组温度作为测点附近温度；</td>
+                            </tr>
+
+                            <tr>
+                                <td>mode = 2</td>
+                                <td>计算应变与温度的相关性系数，将相关性系数超过阈值的所有温度的均值作为测点附近温度；如果没有一组相关性超过阈值的温度，则按照mode=1方式计算。</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li><span class="highlight2">coef_gate</span>&nbsp;相关性阈值<br>
+                        默认为0.8。
+                    </li>
+                </ul>
+        </ul>
+
+
+    </div>
+
+</body>
+</html>

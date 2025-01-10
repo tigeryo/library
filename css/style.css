@@ -1,0 +1,72 @@
+body {
+    display: flex;
+    height: 100vh; /* 使页面高度占满视口 */
+    margin: 0;
+    background-color: #2e2e2e; /* 深色背景 */
+    color: #ffffff; /* 默认文字颜色为白色 */
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    width: 350px;
+    background: #1e1e1e; /* 目录背景色 */
+    color: #ffffff; /* 目录文字颜色 */
+    padding: 15px;
+    box-sizing: border-box; /* 包括内边距和边框在内 */
+}
+
+nav a {
+    color: #ffffff; /* 目录链接颜色 */
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+}
+
+nav a:hover {
+    background: #575757; /* 目录链接悬停效果 */
+}
+
+ul {
+    line-height: 2; /* 设置行间距 */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #282828; /* 内容区域背景色 */
+    color: #ffffff; /* 内容区域文字颜色 */
+    overflow-y: auto; /* 允许内容区域滚动 */
+    box-sizing: border-box;
+}
+
+pre {
+    background-color: #1e1e1e; /* 代码块背景色 */
+    padding: 10px;
+    border-radius: 5px; /* 圆角效果 */
+    overflow: auto; /* 允许代码块滚动 */
+}
+
+.highlight{
+    color: skyblue;
+}
+
+.highlight2{
+    color: yellow;
+}
+
+.input_and_output {
+    width: 80%; /* 表格宽度 */
+    margin: 20px auto; /* 上下间距，左右自动居中 */
+    border-collapse: collapse; /* 合并边框 */
+    text-align: center; /* 文本居中 */
+}
+
+.input_and_output th, .input_and_output td {
+    border: 1px solid #ccc; /* 边框样式 */
+    padding: 10px; /* 内边距 */
+}
+
+.formula {
+    font-size: 1.5em; /* 设置公式字体大小 */
+    margin: 20px 0; /* 上下间距 */
+}
